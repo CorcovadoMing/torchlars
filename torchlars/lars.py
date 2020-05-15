@@ -137,7 +137,7 @@ class LARS(Optimizer):
                         self.trust_coef,
                         self.adaptive_lr)
 
-                    p.grad.add_(weight_decay, p.data)
+                    p.grad.add_(p.data, alpha=weight_decay)
                     p.grad.mul_(adaptive_lr)
 
     def step(self, *args, **kwargs):
